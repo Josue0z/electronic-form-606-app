@@ -6,7 +6,7 @@ import nodemailer from 'nodemailer';
 import multer from 'multer';
 import { Storage } from '@google-cloud/storage';
 import { Decimal } from '../prisma/client/runtime/library';
-
+import {join} from 'path'
 
 const storage = new Storage({
   projectId: process.env.GOOGLE_STORAGE_ID,
@@ -135,6 +135,11 @@ const createUser = async (req: any, prisma: any) => {
     throw e;
   }
 }
+
+app.get('/politicas-de-privacidad',(req,res) =>{
+  res.sendFile(join(__dirname,'../','politicas.html'))
+})
+
 app.get('*', (req, res, next) => {
   var key = req.headers['key'];
   if (key == process.env.KEY) {
@@ -1439,3 +1444,4 @@ app.post('/send-recovery-email', async (req, res) => {
     res.status(500).json({ error })
   }
 })
+
