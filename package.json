@@ -1,0 +1,48 @@
+{
+  "name": "testing-express",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "start": "npm run dev",
+    "seed:run":"ts-node ./prisma/seed.ts",
+    "test": "jest"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.15.0",
+    "@prisma/client": "5.22.0",
+    "@types/node": "22.10.7",
+    "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jest-config": "29.7.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.16",
+    "password-generator": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "5.0.0",
+    "@types/jest": "29.5.14",
+    "@types/multer": "^1.4.12",
+    "@types/node": "22.10.7",
+    "@types/nodemailer": "^6.4.17",
+    "@types/supertest": "6.0.2",
+    "jest": "29.7.0",
+    "jest-environment-node": "29.7.0",
+    "nanoid": "5.0.9",
+    "prisma": "5.22.0",
+    "supertest": "7.0.0",
+    "ts-jest": "29.2.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}

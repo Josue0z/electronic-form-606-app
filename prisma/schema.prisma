@@ -1,0 +1,219 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id                 String   @id @unique @default(cuid())
+  username           String
+  password           String
+  email              String   @unique
+  passwordChangeMode Boolean  @default(false)
+  enabled            Boolean  @default(false)
+  taxPayer           TaxPayer @relation(fields: [username], references: [id])
+
+  createdAt DateTime @default(now())
+
+  Concepts Concepts[]
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model Serial {
+  id   Int    @id
+  code String @unique
+
+  NcfsTypes NcfsTypes[]
+}
+
+model ClassificationType {
+  id   Int    @id @unique @default(autoincrement())
+  name String
+
+  Concepts Concepts[]
+}
+
+model Concepts {
+  id                   Int                @id @unique @default(autoincrement())
+  name                 String
+  classificationType   ClassificationType @relation(fields: [classificationTypeId], references: [id])
+  invoiceType          InvoiceType        @relation(fields: [invoiceTypeId], references: [id])
+  author               Users              @relation(fields: [authorId], references: [id])
+  authorId             String
+  invoiceTypeId        String
+  classificationTypeId Int
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model RequestStatus {
+  id        Int        @id @unique @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  Requests  Requests[]
+}
+
+model Requests {
+  id              String        @id @unique @default(cuid())
+  requestNum      Int           @default(autoincrement())
+  username        String
+  email           String        @unique
+  taxPayer        TaxPayer      @relation(fields: [username], references: [id])
+  status          RequestStatus @relation(fields: [requestStatusId], references: [id])
+  createdAt       DateTime      @default(now())
+  requestStatusId Int
+  Documents       Documents[]
+}
+
+model Documents {
+  id             String       @id @unique @default(cuid())
+  request        Requests     @relation(fields: [requestId], references: [id])
+  documentType   DocumentType @relation(fields: [documentTypeId], references: [id])
+  fileName       String
+  downloadURL    String
+  fileFormatType String
+  documentTypeId Int
+  createdAt      DateTime     @default(now())
+  requestId      String
+}
+
+model PurchasesOrExpenses {
+  id                String          @id @unique @default(cuid())
+  rncOrId           String
+  ncf               String
+  ncfAffected       String?
+  issueDate         DateTime
+  retentionDate     DateTime?
+  total             Decimal
+  tax               Decimal
+  costTax           Decimal?        @default(0)
+  taxPayer          TaxPayer        @relation(fields: [rncOrId], references: [id])
+  author            Users           @relation(fields: [authorId], references: [id])
+  concept           Concepts        @relation(fields: [conceptId], references: [id])
+  taxPayerType      TaxPayerTypes   @relation(fields: [taxPayerTypesId], references: [id])
+  paymentMethod     PaymentsMethods @relation(fields: [paymentsMethodsId], references: [id])
+  ncfType           NcfsTypes       @relation("ncfTypeRelation", fields: [ncfsTypesId], references: [id])
+  ncfAffectType     NcfsTypes?      @relation("ncfAffectTypeRelation", fields: [ncfsAffectTypeId], references: [id])
+  retentionTax      RetentionTax?   @relation(fields: [retentionTaxId], references: [id])
+  retentionIsr      RetentionIsr?   @relation(fields: [retentionIsrId], references: [id])
+  costTaxStatus     CostTaxStatus?  @relation(fields: [costTaxStatusId], references: [id])
+  taxPayerTypesId   Int
+  paymentsMethodsId String
+  ncfsTypesId       String
+  ncfsAffectTypeId  String?
+  retentionTaxId    Int?
+  retentionIsrId    String?
+  costTaxStatusId   Int?
+  conceptId         Int
+  authorId          String
+  updatedAt         DateTime?
+  createdAt         DateTime        @default(now())
+  netAmount         Decimal?        @default(0)
+  retentionTaxValue Decimal?        @default(0)
+  retentionIsrValue Decimal?        @default(0)
+  netToPaid         Decimal?        @default(0)
+  taxForOvertaking  Decimal?        @default(0)
+  manual            Boolean?        @default(false)
+}
+
+model TaxPayerTypes {
+  id        Int      @id @unique
+  name      String
+  createdAt DateTime @default(now())
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model InvoiceType {
+  id        String     @id @unique
+  name      String
+  createdAt DateTime   @default(now())
+  Concepts  Concepts[]
+}
+
+model PaymentsMethods {
+  id        String   @id @unique
+  name      String
+  createdAt DateTime @default(now())
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model NcfsTypes {
+  id                  String                @id @unique
+  name                String
+  serial              Serial                @relation(fields: [serialId], references: [id])
+  serialId            Int
+  createdAt           DateTime              @default(now())
+  PurchasesOrExpenses PurchasesOrExpenses[] @relation("ncfTypeRelation")
+
+  PurchasesOrExpensesOfNcfAffected PurchasesOrExpenses[] @relation("ncfAffectTypeRelation")
+}
+
+model RetentionTax {
+  id        Int      @unique @default(autoincrement())
+  name      String   @id @unique
+  rate      Decimal
+  createdAt DateTime @default(now())
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model RetentionIsr {
+  id        String      @id @unique
+  name      String   @unique
+  rate      Decimal
+  createdAt DateTime @default(now())
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model CostTaxStatus {
+  id        Int      @id @unique @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+}
+
+model TaxPayer {
+  id        String  @id @unique
+  name      String?
+  tradeName String?
+  about     String?
+  col1      String?
+  col2      String?
+  col3      String?
+  col4      String?
+  createdAt String?
+  state     String?
+  status    String?
+
+  PurchasesOrExpenses PurchasesOrExpenses[]
+
+  Requests Requests[]
+
+  Users Users[]
+}
+
+model DocumentType {
+  id   Int    @id @unique @default(autoincrement())
+  name String
+
+  Documents Documents[]
+}
+
+
+model EmailVerifications {
+  id Int @id @default(autoincrement())
+  email String @unique
+  isVerify Boolean @default(false)
+  createdAt DateTime @default(now())
+  code String?
+  expirationDate DateTime?
+}

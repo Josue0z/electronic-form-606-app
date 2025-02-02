@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dgii-electronic-generator-app",
+  "private_key_id": "93b0262574033a8b71cdc434c6329859aa39da97",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDdURv0raVmr81f\nxO66j0b4y/q2244rRzvzH2kEu7Lr5994KwOoWZgpADyLTxQiB28uRDrJO8hg808s\ncXUPbTQtv7Ot8TXTjWyWc8sepvKQqDn8pSBEKyjUsAqqjjE8J7Mw2sXDRxCyhOE0\nxXhi7cwBXZvsIIdlu8yLPCvJ5ZJr1ZOlZ/nviFQtLRkqn2a27XbUazhEr0u1S1CY\nxP0XkE8ajSbQYAmT62kmKoT/usncCCOqO89wC1keJGTa6mHj1UhfsABHopwnH53T\nmtieWsmCy1G1/ZgZzTzz3pj4zzM8RgqFFFjWryhTb9fUyEcLrhkrqubhMCH5I1PE\ndOII9NXRAgMBAAECggEABU84FLlivbErg+fpU0PzL65TFDZ1tW+WzlkbT6ACJZsx\nNwSPKKeHmTo2eaAay0sy3WEJKQE8aCkGJfqN1KIpzYwrDxn5kNr0dzKNda2LJbHH\nfFpoyQHhD6MuilNxdnA8YghplKr8iU/bSEURg4wRaBn7DuHj5aqo+FEn+sa9acVR\nP9fmeUZFeqsuAiFpcvio2jHQyg+aPhwx9WiJxCmrADFcCy4Mrtru7P9686r5grA2\nkSE063YoLGXqeZFjJB00coNHP9QClEHwAGmgUCVArWGDEP07QIWexr6XdERotXZe\nWJO9HdRjyRSny7W+gF5YI+Oef8zTmGwerXNxWLlQ3QKBgQD5TbI1zYMXRH9D8l7+\nwWV6BAklP2mHiKtTv8TiuG40tyEI9CLrWFWlFE1rJ04V7pcP7S3HSJOgkEdJmOcL\nTloaUIa+0KAedZmxvsI/UeTI/cbqzIoBxC3HFW58h5lG7PmOIRqADjnZFUvmY9dG\nbm6qjU2Rj4w3HNp1ofB4JvkpJQKBgQDjQvdfj4U3i6PUwxzbVsKXmhg8eroYZq6M\nmriDcRhjcAXyYUAxgJAP4CLhE77HHTweJORXQlyhI6WvgwCTrvKPg79BXbrSpNxh\nVs9H9u1MqKUTv9eacfmdyGWTnJW1S9N/iKNlfhZdSoZPFj3xaZ3zM2NA+qOmRWSn\nVUIOGrNoPQKBgG2c0sFDNeMyE769PzVFtSdbxOWipvSXi7TL+XYx3wrAhf7Y0M2n\nTijB73QwmO2dtL+k6d7YM0iCh0V9vABFl+pAA668LdqWnFgBZojOqggRRLeR7Q/v\nwKzq6GRKfoMnyGXMeklZd+fRrEiFF275OSE19agNdHn67raP2BoMELsdAoGBALz2\n6LPHpXBbJt15YtwqVuExmudm8KfrcUWuPK/mcO31rqwsGvFOQftBVh8qiN4NO/ig\nmlDH+DdwaYr3dZpWxI96b6PNaNNPi4NQaEghVI0CSUiTopVkIbcFcxh7AaxeoTyR\nA7QXVEc7+VN3XggG1vPqjaPxA/P0DU5pwOPzZavNAoGBAMVlPKO2Py5OV192z0Y8\nbniSiSj40EdzCs+5x7u2ghOg4R2mmfXV59cmj9hpdpkSbGtJ9B7dipH8WrvUDgG0\nd17NrsF5/XvzvCvd+xABbernG7aN0Cpn+Zg4CNSW7mqZ1bESg10TfHjALh7atEF9\nBgsIwL/xcG6WwfWXSXImVPVM\n-----END PRIVATE KEY-----\n",
+  "client_email": "dgii-account-service@dgii-electronic-generator-app.iam.gserviceaccount.com",
+  "client_id": "109814564458524340630",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dgii-account-service%40dgii-electronic-generator-app.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
