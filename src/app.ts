@@ -14,7 +14,7 @@ const storage = new Storage({
     private_key_id: process.env.GOOGLE_CLOUD_PRIVATE_KEY_ID,
     client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL,
     client_id:process.env.GOOGLE_CLOUD_CLIENT_ID,
-    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY
+    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY?.replace(/\\n/g, '\n')
   }
 });
 
