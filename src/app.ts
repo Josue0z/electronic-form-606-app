@@ -759,11 +759,6 @@ app.get(`/requests/:id`, async (req, res) => {
   }
 })
 
-// 1 = PENDIENTE
-
-// 2 = APROBADA
-
-// 3 = RECHAZADA
 
 app.post('/uploads', upload.array('files', 10), async (req, res) => {
   try {
