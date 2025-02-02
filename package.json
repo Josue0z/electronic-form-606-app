@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "start": "npx prisma generate && npx prisma migrate dev --name init && npm run dev",
+    "start": "npm run dev",
     "seed:run":"ts-node ./prisma/seed.ts",
     "test": "jest"
   },
