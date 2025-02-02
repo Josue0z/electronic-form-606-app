@@ -5,14 +5,10 @@ import passwordGenerator from 'password-generator'
 import nodemailer from 'nodemailer';
 import multer from 'multer';
 import { Storage } from '@google-cloud/storage';
-import path from 'path';
 import { Decimal } from '../prisma/client/runtime/library';
-import { error } from 'console';
-
 
 
 const storage = new Storage({
-  keyFilename: path.join(__dirname, '../', process.env.GOOGLE_BUCKET_FILENAME!),
   projectId: process.env.GOOGLE_STORAGE_ID,
   credentials: {
     private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY,
