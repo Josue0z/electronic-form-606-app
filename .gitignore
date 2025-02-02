@@ -3,3 +3,4 @@ dist/
 *.env*
 !.env.example
 !migrations/
+./dgii-electronic-generator-app-93b026257403.json

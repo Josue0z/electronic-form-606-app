@@ -13,7 +13,11 @@ import { error } from 'console';
 
 const storage = new Storage({
   keyFilename: path.join(__dirname, '../', process.env.GOOGLE_BUCKET_FILENAME!),
-  projectId: process.env.GOOGLE_STORAGE_ID
+  projectId: process.env.GOOGLE_STORAGE_ID,
+  credentials: {
+    private_key: process.env.GOOGLE_CLOUD_PRIVATE_KEY,
+    client_email: process.env.GOOGLE_CLOUD_CLIENT_EMAIL
+  }
 });
 
 
